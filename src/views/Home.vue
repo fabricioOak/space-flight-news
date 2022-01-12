@@ -1,7 +1,7 @@
 <template>
   <div id="home">
     <Modal
-      class="opacity-25 fixed inset-0 z-40 bg-black"
+      @input="closeModal()"
       v-show="showModal"
       :url="this.modalArticle.url"
       :title="this.modalArticle.title"
@@ -10,8 +10,8 @@
       :newsSite="this.modalArticle.newsSite"
       :imageUrl="this.modalArticle.imageUrl"
     />
-    <div v-if="showModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
-    <header id="header">
+
+    <header id="header" class="h-30 p-4 bg-white">
       <!-- Main header -->
       <div class="p-4 flex justify-between items-center">
         <span></span>
@@ -47,7 +47,7 @@
       </div>
       <!-- Page title -->
       <div>
-        <div class="m-4 flex items-center flex-col justify-center">
+        <div class="flex items-center flex-col justify-center">
           <span
             class="roll-in-blurred-left rounded-full border-2 border-myBlack"
           >
@@ -64,7 +64,20 @@
         </div>
       </div>
     </header>
+    <div v-if="!loading" style="height: 150px; overflow: hidden">
+      <svg
+        class="w-full h-full bg-white"
+        viewBox="0 0 500 150"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M0.00,49.98 C150.00,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+          style="stroke: none; fill: #302e53"
+        ></path>
+      </svg>
+    </div>
     <main
+      v-if="!loading"
       class="flex items-center flex-col container text-white bg-myBlue content"
     >
       <div
@@ -91,7 +104,13 @@
               </span>
             </div>
             <p>{{ article.summary }}</p>
-            <button class="border-2 border-myOrange p-2 mt-2 rounded-md">
+            <button
+              @click="
+                toggleModal();
+                getById(article.id);
+              "
+              class="border-2 border-myOrange p-2 mt-2 rounded-md"
+            >
               Ver mais
             </button>
           </div>
@@ -157,6 +176,7 @@ export default {
   },
   mounted() {
     this.getArticles();
+    console.log(this.showModal);
   },
   methods: {
     getArticles() {
@@ -175,7 +195,10 @@ export default {
         });
     },
     toggleModal() {
-      this.showModal = !this.showModal;
+      this.showModal = true;
+    },
+    closeModal() {
+      this.showModal = false;
     },
     getById(id) {
       this.$store
@@ -202,10 +225,7 @@ export default {
 
 <style lang="postcss">
 .card-image {
-  background-size: cover;
-  background-position: center;
-  height: 250px;
-  width: 100%;
+  @apply bg-cover bg-center h-56 w-full;
   border-radius: 1em;
 }
 

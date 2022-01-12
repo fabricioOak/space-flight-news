@@ -1,28 +1,36 @@
 <template>
-  <div>
+  <div
+    tabindex="0"
+    @keyup.esc="$emit('input')"
+    class="min-w-screen h-screen animated fadeIn faster fixed left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none bg-no-repeat bg-center bg-cover"
+  >
     <div
-      class="border-2 border-white w-2/3 flex items-center justify-between p-4 my-2"
+      tabindex="0"
+      class="flex items-center justify-between flex-col border-2 rounded-lg border-white w-2/3 bg-black p-4 my-2"
     >
-      <div class="text-left m-2 h-full w-5/12">
-        <img class="card-image" :src="imageUrl" alt="" />
-      </div>
-      <div class="h-56 w-7/12">
-        <h2 class="drop-shadow-sm font-bold text-xl text-myOrange">
-          {{ title }}
-        </h2>
-        <div class="mb-2 flex items-center justify-between">
-          <span class="text-xs">{{ getDate(publishedAt) }}</span>
-          <span class="font-bold text-xs mr-2 p-2 rounded-md bg-myOrange">
-            {{ newsSite }}
-          </span>
+      <div class="flex items-center justify-between">
+        <div class="text-left m-2 h-full w-5/12">
+          <img class="card-image" :src="imageUrl" alt="" />
         </div>
-        <p>{{ summary }}</p>
+        <div class="h-56 w-7/12">
+          <h2 class="drop-shadow-sm font-bold text-xl text-myOrange">
+            {{ title }}
+          </h2>
+          <div class="mb-2 flex items-center justify-between">
+            <span class="text-white text-xs">{{ getDate(publishedAt) }}</span>
+            <span
+              class="font-bold text-xs mr-2 p-2 rounded-md text-white bg-myOrange"
+            >
+              {{ newsSite }}
+            </span>
+          </div>
+          <p class="text-white">{{ summary }}</p>
+        </div>
       </div>
-      <a :href="url" class="border-2 border-myOrange p-2 mt-2 rounded-md">
-        Ir para o site
-      </a>
+      <div>
+        <a :href="url" target="__blank" class="text-white">Ir para o site</a>
+      </div>
     </div>
-    <div v-if="showModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
   </div>
 </template>
 
@@ -44,9 +52,6 @@ export default {
     };
   },
   methods: {
-    toggleModal() {
-      this.showModal = !this.showModal;
-    },
     getDate(date) {
       return new Date(date).toLocaleDateString();
     },

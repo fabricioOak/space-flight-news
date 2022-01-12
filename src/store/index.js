@@ -15,10 +15,24 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    getArticles({ commit }) {
+    getArticles({ commit }, { limit }) {
       return new Promise((resolve, reject) => {
         commit('setLoading', true);
-        ArticleService.getArticles()
+        ArticleService.getArticles(limit)
+          .then(response => {
+            commit('setLoading', false);
+            resolve(response);
+          })
+          .catch(error => {
+            commit('setLoading', false);
+            reject(error);
+          });
+      });
+    },
+    getById({ commit }, { id }) {
+      return new Promise((resolve, reject) => {
+        commit('setLoading', true);
+        ArticleService.getById(id)
           .then(response => {
             commit('setLoading', false);
             resolve(response);

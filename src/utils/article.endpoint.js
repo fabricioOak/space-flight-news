@@ -2,7 +2,8 @@ import BaseEndpoint from "./base.endpoint";
 
 const ArticleEndpoint = {
   article: {
-    getArticles: BaseEndpoint.URL + "/articles",
+    getArticles: (limit) => BaseEndpoint.URL + "/articles?_limit=" + limit,
+    getById: (id) => BaseEndpoint.URL + "/articles/" + id,
   }
 }
 

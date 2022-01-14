@@ -4,10 +4,14 @@
 
 ### Get information about space, rockets and space flights!
 
-## Used technologies
+# Used technologies
 
 * Vue.js (https://vuejs.org/) 
 * Tailwind CSS (https://tailwindcss.com/)
+
+## Project presentation
+
+https://www.loom.com/share/4173ecf3f6014aed9ac41db69cdbf093
 
 ## Project setup
 ```

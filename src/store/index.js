@@ -15,10 +15,10 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    getArticles({ commit }, { limit }) {
+    getArticles({ commit }, { limit, sort }) {
       return new Promise((resolve, reject) => {
         commit('setLoading', true);
-        ArticleService.getArticles(limit)
+        ArticleService.getArticles(limit, sort)
           .then(response => {
             commit('setLoading', false);
             resolve(response);
@@ -43,5 +43,19 @@ export default new Vuex.Store({
           });
       });
     },
+    searchByTitle({ commit }, { limit, title }) {
+      return new Promise((resolve, reject) => {
+        commit('setLoading', true);
+        ArticleService.searchByTitle(limit, title)
+          .then(response => {
+            commit('setLoading', false);
+            resolve(response);
+          })
+          .catch(error => {
+            commit('setLoading', false);
+            reject(error);
+          });
+      });
+    }
   }
 })

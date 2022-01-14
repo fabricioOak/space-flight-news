@@ -56,9 +56,7 @@
         <!-- Page title -->
         <div>
           <div class="flex items-center flex-col justify-center">
-            <span
-              class="roll-in-blurred-left rounded-full border-2 border-myBlack"
-            >
+            <span class="roll rounded-full border-2 border-myBlack">
               <img
                 class="vibrate-1 p-12 h-60 w-60"
                 src="../assets/space-rocket.svg"
@@ -173,8 +171,8 @@
   border-radius: 1em;
 }
 
-.roll-in-blurred-left {
-  animation: roll-in-blurred-left 0.65s cubic-bezier(0.23, 1, 0.32, 1) both;
+.roll {
+  animation: roll 0.65s cubic-bezier(0.23, 1, 0.32, 1) both;
 }
 
 .vibrate-1:hover {
@@ -201,7 +199,7 @@
     transform: translate(0);
   }
 }
-@keyframes roll-in-blurred-left {
+@keyframes roll {
   0% {
     transform: translateX(-1000px) rotate(-720deg);
     filter: blur(50px);
@@ -211,39 +209,6 @@
     transform: translateX(0) rotate(0deg);
     filter: blur(0);
     opacity: 1;
-  }
-}
-
-.spinner {
-  display: inline-block;
-  position: relative;
-  width: 80px;
-  height: 80px;
-}
-.spinner div {
-  position: absolute;
-  border: 4px solid #fff;
-  opacity: 1;
-  border-radius: 50%;
-  animation: spinner 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
-}
-.spinner div:nth-child(2) {
-  animation-delay: -0.5s;
-}
-@keyframes spinner {
-  0% {
-    top: 36px;
-    left: 36px;
-    width: 0;
-    height: 0;
-    opacity: 1;
-  }
-  100% {
-    top: 0px;
-    left: 0px;
-    width: 72px;
-    height: 72px;
-    opacity: 0;
   }
 }
 </style>

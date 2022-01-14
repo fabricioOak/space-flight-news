@@ -1,4 +1,13 @@
-# space-flight-news
+# Front-end Challenge 🏅 2021 - Space Flight News
+
+>  This is a challenge by [Coodesh](https://coodesh.com/)
+
+### Get information about space, rockets and space flights!
+
+## Used technologies
+
+* Vue.js (https://vuejs.org/) 
+* Tailwind CSS (https://tailwindcss.com/)
 
 ## Project setup
 ```
@@ -19,6 +28,3 @@ npm run build
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

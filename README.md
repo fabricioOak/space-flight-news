@@ -1,8 +1,7 @@
-Space Flight News
+# 🚀 Space Flight News 🚀
+<p>Get information about space, rockets and space flights!</p>
 
-### Get information about space, rockets and space flights!
-
-# Used technologies
+### Used technologies
 
 * Vue.js (https://vuejs.org/) 
 * Tailwind CSS (https://tailwindcss.com/)
